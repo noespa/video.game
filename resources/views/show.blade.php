@@ -3,13 +3,13 @@
 @section('content')
 
 <div class="container mx-auto px-4">
-    <div class="game-details border-b border-gray-800 pb-12 flex">
+    <div class="game-details border-b border-gray-800 pb-12 flex flex-col lg:flex-row">
         <div class="flex-none">
             <img src="https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1rqa.jpg" alt="Game cover"
                 class="w-72">
         </div>
-        <div class="ml-12 mr-64">
-            <h2 class="font-semibold text-4xl">Rise of the Tomb Rider</h2>
+        <div class="lg:ml-12 lg:mr-64">
+            <h2 class="font-semibold text-4xl leading-tight mt-1">Rise of the Tomb Rider</h2>
             <div class="text-gray-400">
                 <span>Adventure, RPG</span>
                 &middot;
@@ -30,7 +30,7 @@
                     </div>
                     <div class="ml-4 text-xs">Critic <br> Score</div>
                 </div>
-                <div class="flex items-center ml-12 space-x-4">
+                <div class="flex items-center lg:ml-12 mt-4 lg:mt-0 space-x-4">
                     <div class="w-8 h-8 bg-gray-800 rounded-full flex justify-center items-center">
                         <a href="#" class="hover:text-gray-400">
                             <svg class="w-5 h-5 fill-current" viewBox="0 0 16 17" fill="none">
@@ -95,7 +95,7 @@
 
     <div class="images-container border-b border-gray-800 pb-12 mt-8">
         <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Images</h2>
-        <div class="grid grid-cols-3 gap-12 mt-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8">
             <div>
                 <a href="#">
                     <img src="https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1rqa.jpg" alt="screenshot"
