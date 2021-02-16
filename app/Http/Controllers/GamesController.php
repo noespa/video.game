@@ -55,7 +55,7 @@ class GamesController extends Controller
         )->post('https://api.igdb.com/v4/games/')
         ->json();
         
-        
+        // dump($game);
         
         abort_if(!$game, 404);
 
@@ -67,19 +67,19 @@ class GamesController extends Controller
     private function formatGameForView($game)
     {
         return collect($game)->merge([
-            'coverImg' => Str::replaceFirst('thumb', 'cover_big', $game['cover']['url']),
-            'genresName' => collect($game['genres'])->pluck('name')->implode(', '),
-            'companyName' => $game['involved_companies'][0]['company']['name'],
-            'platformsName' => collect($game['platforms'])->pluck('abbreviation')->implode(', '),
-            'memberScore' => isset($game['rating']) ? round($game['rating']).'%' : '0%',
-            'criticScore' => isset($game['total_rating']) ? round($game['total_rating']).'%' : '0%',
-            'trailer' => 'https://www.youtube.com/watch/'.$game['videos'][0]['video_id'],
-            'screenshots' => collect($game['screenshots'])->map(function ($screenshot) {
+            'coverImg' => isset($game['cover']) ? Str::replaceFirst('thumb', 'cover_big', $game['cover']['url']) : null,
+            'genresName' => isset($game['genres']) ? collect($game['genres'])->pluck('name')->implode(', ') : null,
+            'companyName' => isset($game['involved_companies']) ? $game['involved_companies'][0]['company']['name'] : null,
+            'platformsName' => isset($game['platforms']) ? collect($game['platforms'])->pluck('abbreviation')->implode(', ') : null,
+            'memberScore' => isset($game['rating']) ? round($game['rating']) : '0',
+            'criticScore' => isset($game['total_rating']) ? round($game['total_rating']) : '0',
+            'trailer' => isset($game['video']) ? 'https://www.youtube.com/watch/'.$game['videos'][0]['video_id'] : null,
+            'screenshots' => isset($game['screenshots']) ? collect($game['screenshots'])->map(function ($screenshot) {
                 return [
                     'huge' => Str::replaceFirst('thumb', 'screenshot_huge', $screenshot['url']),
                     'big' => Str::replaceFirst('thumb', 'screenshot_big', $screenshot['url']),
                 ];
-            })->take(9),
+            })->take(9) : null,
             'social' => [
                 'website' => collect($game['websites'])->first(),
                 'facebook' => collect($game['websites'])->filter(function ($website) {

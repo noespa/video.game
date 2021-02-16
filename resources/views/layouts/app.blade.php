@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>Laracasts Video Game</title>
     <livewire:styles />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
 
 <body class="bg-gray-900 text-white">
@@ -25,23 +26,11 @@
                 </ul>
             </div>
             <div class="flex items-center mt-6 lg:mt-0">
-                <div class="relative">
-                    <input type="text"
-                        class="bg-gray-800 text-sm rounded-full focus:outline-none focus:ring focus:border-blue-300 w-64 px-3 pl-8 py-1"
-                        placeholder="Szukaj ...">
-                    <div class="absolute top-0 flex items-center h-full ml-2">
-
-                        <svg class="fill-current text-gray-400 w-4" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24">
-                            <path
-                                d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z" />
-                        </svg>
+                <livewire:search-dropdown>
+                    <div class="ml-6">
+                        <a href="#"><img src="https://assets.laracasts.com/images/mascot/larydefault.svg" alt="avatar"
+                                class="rounded-full w-8"></a>
                     </div>
-                </div>
-                <div class="ml-6">
-                    <a href="#"><img src="https://assets.laracasts.com/images/mascot/larydefault.svg" alt="avatar"
-                            class="rounded-full w-8"></a>
-                </div>
             </div>
         </nav>
     </header>
@@ -56,6 +45,8 @@
         </div>
     </footer>
     <livewire:scripts />
+    <script src="/js/app.js"></script>
+    @stack('scripts')
 </body>
 
 </html>
